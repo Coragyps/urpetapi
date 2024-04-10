@@ -16,15 +16,19 @@ public class Membresia {
     private LocalDate MembresiaFechaFin;
     @Column(name = "MembresiaEstado", nullable = false, length = 20)
     private String MembresiaEstado;
+    @ManyToOne
+    @JoinColumn(name = "UsuariId")
+    private Usuario usuario;
 
     public Membresia() {
     }
 
-    public Membresia(int membresiaId, LocalDate membresiaFechaInicio, LocalDate membresiaFechaFin, String membresiaEstado) {
+    public Membresia(int membresiaId, LocalDate membresiaFechaInicio, LocalDate membresiaFechaFin, String membresiaEstado, Usuario usuario) {
         MembresiaId = membresiaId;
         MembresiaFechaInicio = membresiaFechaInicio;
         MembresiaFechaFin = membresiaFechaFin;
         MembresiaEstado = membresiaEstado;
+        this.usuario = usuario;
     }
 
     public int getMembresiaId() {
@@ -57,5 +61,13 @@ public class Membresia {
 
     public void setMembresiaEstado(String membresiaEstado) {
         MembresiaEstado = membresiaEstado;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
