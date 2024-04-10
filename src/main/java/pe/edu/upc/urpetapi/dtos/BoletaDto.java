@@ -1,5 +1,7 @@
 package pe.edu.upc.urpetapi.dtos;
 
+import pe.edu.upc.urpetapi.entities.Usuario;
+
 import java.time.LocalDate;
 
 public class BoletaDto {
@@ -7,6 +9,7 @@ public class BoletaDto {
     private Double BoletaMonto;
     private LocalDate BoletaFecha;
     private String BoletaMoneda;
+    private Usuario usuario;
 
     public int getBoletaId() {
         return BoletaId;
@@ -38,5 +41,13 @@ public class BoletaDto {
 
     public void setBoletaMoneda(String boletaMoneda) {
         BoletaMoneda = boletaMoneda;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
