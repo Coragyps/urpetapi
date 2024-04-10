@@ -1,5 +1,7 @@
 package pe.edu.upc.urpetapi.dtos;
 
+import pe.edu.upc.urpetapi.entities.Reserva;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -8,6 +10,7 @@ public class HorarioDto {
     private LocalDate HorarioFecha;
     private LocalTime HorarioHoraInicio;
     private LocalTime HorarioHoraFin;
+    private Reserva reserva;
 
     public int getHorarioId() {
         return HorarioId;
@@ -39,5 +42,13 @@ public class HorarioDto {
 
     public void setHorarioHoraFin(LocalTime horarioHoraFin) {
         HorarioHoraFin = horarioHoraFin;
+    }
+
+    public Reserva getReserva() {
+        return reserva;
+    }
+
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
     }
 }
