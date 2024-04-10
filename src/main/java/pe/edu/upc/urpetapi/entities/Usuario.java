@@ -2,6 +2,9 @@ package pe.edu.upc.urpetapi.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 @Entity
 @Table(name = "Usuario")
 public class Usuario {
@@ -20,11 +23,15 @@ public class Usuario {
     private String UsuarioPassword;
     @Column(name = "UsuarioPuntuacion",nullable = false)
     private double UsuarioPuntuacion;
+    @Column (name = "UsuarioHoraInicio",nullable = false)
+    private LocalTime UsuarioHoraInicio;
+    @Column(name = "UsuarioHoraFin",nullable = false)
+    private LocalTime UsuarioHoraFin;
 
     public Usuario() {
     }
 
-    public Usuario(int usuarioId, String usuarioNombre, String usuarioCorreo, String usuarioTelefono, String usuarioEstado, String usuarioPassword, double usuarioPuntuacion) {
+    public Usuario(int usuarioId, String usuarioNombre, String usuarioCorreo, String usuarioTelefono, String usuarioEstado, String usuarioPassword, double usuarioPuntuacion, LocalTime usuarioHoraInicio, LocalTime usuarioHoraFin) {
         UsuarioId = usuarioId;
         UsuarioNombre = usuarioNombre;
         UsuarioCorreo = usuarioCorreo;
@@ -32,6 +39,8 @@ public class Usuario {
         UsuarioEstado = usuarioEstado;
         UsuarioPassword = usuarioPassword;
         UsuarioPuntuacion = usuarioPuntuacion;
+        UsuarioHoraInicio = usuarioHoraInicio;
+        UsuarioHoraFin = usuarioHoraFin;
     }
 
     public int getUsuarioId() {
@@ -88,5 +97,21 @@ public class Usuario {
 
     public void setUsuarioPuntuacion(double usuarioPuntuacion) {
         UsuarioPuntuacion = usuarioPuntuacion;
+    }
+
+    public LocalTime getUsuarioHoraInicio() {
+        return UsuarioHoraInicio;
+    }
+
+    public void setUsuarioHoraInicio(LocalTime usuarioHoraInicio) {
+        UsuarioHoraInicio = usuarioHoraInicio;
+    }
+
+    public LocalTime getUsuarioHoraFin() {
+        return UsuarioHoraFin;
+    }
+
+    public void setUsuarioHoraFin(LocalTime usuarioHoraFin) {
+        UsuarioHoraFin = usuarioHoraFin;
     }
 }
