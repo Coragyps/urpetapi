@@ -10,13 +10,17 @@ public class Comentario {
     private int ComentarioId;
     @Column(name = "ComentarioTexto", nullable = false, length = 200)
     private String ComentarioTexto;
+    @ManyToOne
+    @JoinColumn(name = "ReservaId")
+    private Reserva reserva;
 
     public Comentario() {
     }
 
-    public Comentario(int comentarioId, String comentarioTexto) {
+    public Comentario(int comentarioId, String comentarioTexto, Reserva reserva) {
         ComentarioId = comentarioId;
         ComentarioTexto = comentarioTexto;
+        this.reserva = reserva;
     }
 
     public int getComentarioId() {
@@ -33,5 +37,13 @@ public class Comentario {
 
     public void setComentarioTexto(String comentarioTexto) {
         ComentarioTexto = comentarioTexto;
+    }
+
+    public Reserva getReserva() {
+        return reserva;
+    }
+
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
     }
 }

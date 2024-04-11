@@ -17,15 +17,19 @@ public class Horario {
     private LocalTime HorarioHoraInicio;
     @Column(name = "HorarioHoraFin", nullable = false)
     private LocalTime HorarioHoraFin;
+    @ManyToOne
+    @JoinColumn(name = "ReservaId")
+    private Reserva reserva;
 
     public Horario() {
     }
 
-    public Horario(int horarioId, LocalDate horarioFecha, LocalTime horarioHoraInicio, LocalTime horarioHoraFin) {
+    public Horario(int horarioId, LocalDate horarioFecha, LocalTime horarioHoraInicio, LocalTime horarioHoraFin, Reserva reserva) {
         HorarioId = horarioId;
         HorarioFecha = horarioFecha;
         HorarioHoraInicio = horarioHoraInicio;
         HorarioHoraFin = horarioHoraFin;
+        this.reserva = reserva;
     }
 
     public int getHorarioId() {
@@ -58,5 +62,13 @@ public class Horario {
 
     public void setHorarioHoraFin(LocalTime horarioHoraFin) {
         HorarioHoraFin = horarioHoraFin;
+    }
+
+    public Reserva getReserva() {
+        return reserva;
+    }
+
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
     }
 }

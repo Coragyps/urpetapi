@@ -1,4 +1,6 @@
 package pe.edu.upc.urpetapi.dtos;
+import pe.edu.upc.urpetapi.entities.Usuario;
+
 import java.time.LocalDate;
 
 public class MembresiaDto {
@@ -6,6 +8,15 @@ public class MembresiaDto {
     private LocalDate MembresiaFechaInicio;
     private LocalDate MembresiaFechaFin;
     private String MembresiaEstado;
+    private Usuario usuario;
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
     public int getMembresiaId() {
         return MembresiaId;

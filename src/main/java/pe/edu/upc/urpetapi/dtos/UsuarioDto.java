@@ -1,6 +1,9 @@
 package pe.edu.upc.urpetapi.dtos;
 
 
+
+import java.time.LocalTime;
+
 public class UsuarioDto {
     private int UsuarioId;
 
@@ -15,6 +18,9 @@ public class UsuarioDto {
     private String UsuarioPassword;
 
     private double UsuarioPuntuacion;
+    private LocalTime UsuarioHoraInicio;
+
+    private LocalTime UsuarioHoraFin;
 
     public int getUsuarioId() {
         return UsuarioId;
@@ -70,5 +76,21 @@ public class UsuarioDto {
 
     public void setUsuarioPuntuacion(double usuarioPuntuacion) {
         UsuarioPuntuacion = usuarioPuntuacion;
+    }
+
+    public LocalTime getUsuarioHoraInicio() {
+        return UsuarioHoraInicio;
+    }
+
+    public void setUsuarioHoraInicio(LocalTime usuarioHoraInicio) {
+        UsuarioHoraInicio = usuarioHoraInicio;
+    }
+
+    public LocalTime getUsuarioHoraFin() {
+        return UsuarioHoraFin;
+    }
+
+    public void setUsuarioHoraFin(LocalTime usuarioHoraFin) {
+        UsuarioHoraFin = usuarioHoraFin;
     }
 }
