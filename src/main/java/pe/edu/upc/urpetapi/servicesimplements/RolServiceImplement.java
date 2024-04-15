@@ -6,7 +6,7 @@ import pe.edu.upc.urpetapi.repositories.iRolRepository;
 import pe.edu.upc.urpetapi.servicesinterfaces.iRolService;
 
 @Service
-public class RolRepository implements iRolService {
+public class RolServiceImplement implements iRolService {
     @Autowired
     private iRolRepository rolR;
 }

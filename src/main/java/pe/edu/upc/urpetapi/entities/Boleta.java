@@ -15,15 +15,19 @@ public class Boleta {
     private LocalDate BoletaFecha;
     @Column(name = "BoletaMoneda", nullable = false, length = 20)
     private String BoletaMoneda;
+    @ManyToOne
+    @JoinColumn(name = "ReservaId")
+    private Reserva reserva;
 
     public Boleta() {
     }
 
-    public Boleta(int boletaId, Double boletaMonto, LocalDate boletaFecha, String boletaMoneda) {
+    public Boleta(int boletaId, Double boletaMonto, LocalDate boletaFecha, String boletaMoneda, Reserva reserva) {
         BoletaId = boletaId;
         BoletaMonto = boletaMonto;
         BoletaFecha = boletaFecha;
         BoletaMoneda = boletaMoneda;
+        this.reserva = reserva;
     }
 
     public int getBoletaId() {
@@ -56,5 +60,13 @@ public class Boleta {
 
     public void setBoletaMoneda(String boletaMoneda) {
         BoletaMoneda = boletaMoneda;
+    }
+
+    public Reserva getReserva() {
+        return reserva;
+    }
+
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
     }
 }

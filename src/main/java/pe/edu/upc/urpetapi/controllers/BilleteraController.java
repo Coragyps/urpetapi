@@ -9,5 +9,5 @@ import pe.edu.upc.urpetapi.servicesinterfaces.iBilleteraService;
 @RequestMapping("/Billetera")
 public class BilleteraController {
     @Autowired
-    private iBilleteraService iBil;
+    private iBilleteraService bilS;
 }

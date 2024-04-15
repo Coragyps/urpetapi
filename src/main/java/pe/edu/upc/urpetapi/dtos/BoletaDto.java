@@ -1,5 +1,7 @@
 package pe.edu.upc.urpetapi.dtos;
 
+import pe.edu.upc.urpetapi.entities.Reserva;
+
 import java.time.LocalDate;
 
 public class BoletaDto {
@@ -7,6 +9,15 @@ public class BoletaDto {
     private Double BoletaMonto;
     private LocalDate BoletaFecha;
     private String BoletaMoneda;
+    private Reserva reserva;
+
+    public Reserva getReserva() {
+        return reserva;
+    }
+
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
+    }
 
     public int getBoletaId() {
         return BoletaId;
@@ -39,4 +50,5 @@ public class BoletaDto {
     public void setBoletaMoneda(String boletaMoneda) {
         BoletaMoneda = boletaMoneda;
     }
+
 }

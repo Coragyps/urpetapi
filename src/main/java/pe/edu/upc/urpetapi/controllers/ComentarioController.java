@@ -7,5 +7,5 @@ import pe.edu.upc.urpetapi.servicesinterfaces.iComentarioService;
 @RestController
 @RequestMapping("/Comentario")
 public class ComentarioController {
-    private iComentarioService iCom;
+    private iComentarioService comS;
 }
