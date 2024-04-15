@@ -10,13 +10,17 @@ public class Billetera {
     private int BilleteraId;
     @Column(name = "BilleteraMonto", nullable = false)
     private Double BilleteraMonto;
+    @ManyToOne
+    @JoinColumn(name = "UsuarioId")
+    private Usuario usuario;
 
     public Billetera() {
     }
 
-    public Billetera(int billeteraId, Double billeteraMonto) {
+    public Billetera(int billeteraId, Double billeteraMonto, Usuario usuario) {
         BilleteraId = billeteraId;
         BilleteraMonto = billeteraMonto;
+        this.usuario = usuario;
     }
 
     public int getBilleteraId() {
@@ -33,5 +37,13 @@ public class Billetera {
 
     public void setBilleteraMonto(Double billeteraMonto) {
         BilleteraMonto = billeteraMonto;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

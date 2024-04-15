@@ -7,5 +7,5 @@ import pe.edu.upc.urpetapi.servicesinterfaces.iHorarioService;
 @RestController
 @RequestMapping("/Horario")
 public class HorarioController {
-    private iHorarioService iHor;
+    private iHorarioService horS;
 }

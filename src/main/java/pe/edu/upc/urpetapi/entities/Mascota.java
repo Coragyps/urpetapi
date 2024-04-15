@@ -10,10 +10,12 @@ public class Mascota {
     private int MascotaId;
     @Column(name = "MascotaNombre", nullable = false, length = 20)
     private String MacotaNombre;
-    @Column(name = "MascotaFoto", nullable = false)
+    @Column(name = "MascotaFoto")
     private String MascotaFoto;
     @Column(name = "MascotaEstado", nullable = false, length = 20)
     private String MascotaEstado;
+    @Column(name = "MascotaHabilitado")
+    private Boolean MascotaHabilitado;
     @ManyToOne
     @JoinColumn(name = "UsuarioId")
     private Usuario usuario;
