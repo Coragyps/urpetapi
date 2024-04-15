@@ -8,5 +8,5 @@ import pe.edu.upc.urpetapi.servicesinterfaces.iUsuarioService;
 @Service
 public class UsuarioServiceImplement implements iUsuarioService {
     @Autowired
-    private iUsuarioRepository usuR;
+    private iUsuarioRepository useR;
 }

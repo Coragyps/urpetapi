@@ -3,31 +3,31 @@ package pe.edu.upc.urpetapi.dtos;
 import pe.edu.upc.urpetapi.entities.Usuario;
 
 public class RolDto {
-    private int RolId;
-    private String RolTipo;
-    private Usuario usuario;
+    private Long id;
+    private String rol;
+    private Usuario user;
 
-    public int getRolId() {
-        return RolId;
+    public Long getId() {
+        return id;
     }
 
-    public void setRolId(int rolId) {
-        RolId = rolId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getRolTipo() {
-        return RolTipo;
+    public String getRol() {
+        return rol;
     }
 
-    public void setRolTipo(String rolTipo) {
-        RolTipo = rolTipo;
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Usuario getUser() {
+        return user;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setUser(Usuario user) {
+        this.user = user;
     }
 }
