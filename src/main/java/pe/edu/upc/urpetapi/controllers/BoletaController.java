@@ -9,5 +9,5 @@ import pe.edu.upc.urpetapi.servicesinterfaces.iBoletaService;
 @RequestMapping("/Boleta")
 public class BoletaController {
     @Autowired
-    private iBoletaService iBol;
+    private iBoletaService bolS;
 }

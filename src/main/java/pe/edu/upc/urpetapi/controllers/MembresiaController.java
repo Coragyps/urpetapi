@@ -7,5 +7,5 @@ import pe.edu.upc.urpetapi.servicesinterfaces.iMembresiaService;
 @RestController
 @RequestMapping("/Membresia")
 public class MembresiaController {
-    private iMembresiaService iMem;
+    private iMembresiaService memS;
 }

@@ -8,6 +8,7 @@ public class MascotaDto {
     private String MascotaFoto;
     private String MascotaEstado;
     private Usuario usuario;
+    private Boolean MascotaHabilitado;
 
     public int getMascotaId() {
         return MascotaId;
@@ -47,5 +48,13 @@ public class MascotaDto {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public Boolean getMascotaHabilitado() {
+        return MascotaHabilitado;
+    }
+
+    public void setMascotaHabilitado(Boolean mascotaHabilitado) {
+        MascotaHabilitado = mascotaHabilitado;
     }
 }

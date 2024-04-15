@@ -1,96 +1,41 @@
 package pe.edu.upc.urpetapi.dtos;
 
-
-
-import java.time.LocalTime;
-
 public class UsuarioDto {
-    private int UsuarioId;
+    private Long id;
 
-    private String UsuarioNombre;
+    private String username;
+    private String password;
+    private Boolean enabled;
 
-    private String UsuarioCorreo;
-
-    private String UsuarioTelefono;
-
-    private String UsuarioEstado;
-
-    private String UsuarioPassword;
-
-    private double UsuarioPuntuacion;
-    private LocalTime UsuarioHoraInicio;
-
-    private LocalTime UsuarioHoraFin;
-
-    public int getUsuarioId() {
-        return UsuarioId;
+    public Long getId() {
+        return id;
     }
 
-    public void setUsuarioId(int usuarioId) {
-        UsuarioId = usuarioId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getUsuarioNombre() {
-        return UsuarioNombre;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUsuarioNombre(String usuarioNombre) {
-        UsuarioNombre = usuarioNombre;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getUsuarioCorreo() {
-        return UsuarioCorreo;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUsuarioCorreo(String usuarioCorreo) {
-        UsuarioCorreo = usuarioCorreo;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getUsuarioTelefono() {
-        return UsuarioTelefono;
+    public Boolean getEnabled() {
+        return enabled;
     }
 
-    public void setUsuarioTelefono(String usuarioTelefono) {
-        UsuarioTelefono = usuarioTelefono;
-    }
-
-    public String getUsuarioEstado() {
-        return UsuarioEstado;
-    }
-
-    public void setUsuarioEstado(String usuarioEstado) {
-        UsuarioEstado = usuarioEstado;
-    }
-
-    public String getUsuarioPassword() {
-        return UsuarioPassword;
-    }
-
-    public void setUsuarioPassword(String usuarioPassword) {
-        UsuarioPassword = usuarioPassword;
-    }
-
-    public double getUsuarioPuntuacion() {
-        return UsuarioPuntuacion;
-    }
-
-    public void setUsuarioPuntuacion(double usuarioPuntuacion) {
-        UsuarioPuntuacion = usuarioPuntuacion;
-    }
-
-    public LocalTime getUsuarioHoraInicio() {
-        return UsuarioHoraInicio;
-    }
-
-    public void setUsuarioHoraInicio(LocalTime usuarioHoraInicio) {
-        UsuarioHoraInicio = usuarioHoraInicio;
-    }
-
-    public LocalTime getUsuarioHoraFin() {
-        return UsuarioHoraFin;
-    }
-
-    public void setUsuarioHoraFin(LocalTime usuarioHoraFin) {
-        UsuarioHoraFin = usuarioHoraFin;
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 }

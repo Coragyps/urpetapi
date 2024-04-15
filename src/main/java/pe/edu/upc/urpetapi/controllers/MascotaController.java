@@ -7,5 +7,5 @@ import pe.edu.upc.urpetapi.servicesinterfaces.iMascotaService;
 @RestController
 @RequestMapping("/Mascota")
 public class MascotaController {
-    private iMascotaService iMas;
+    private iMascotaService masS;
 }

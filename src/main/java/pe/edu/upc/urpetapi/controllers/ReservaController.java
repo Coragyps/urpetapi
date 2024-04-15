@@ -7,5 +7,5 @@ import pe.edu.upc.urpetapi.servicesinterfaces.iReservaService;
 @RestController
 @RequestMapping("/Reserva")
 public class ReservaController {
-    private iReservaService iRes;
+    private iReservaService resS;
 }
