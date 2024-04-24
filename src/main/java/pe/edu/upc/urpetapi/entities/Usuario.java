@@ -7,7 +7,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
+@Table(name = "Usuario")
 public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,48 +22,77 @@ public class Usuario implements Serializable {
     @JoinColumn(name = "user_id")
     private List<Rol> roles;
 
+    //de la clase usuario
+
     @Column(name = "UsuarioNombre",length = 50,nullable = false)
     private String UsuarioNombre;
+    @Column(name = "UsuarioTelefono",length = 20)
+    private String UsuarioTelefono;
     @Column(name = "UsuarioCorreo",length = 50)
     private String UsuarioCorreo;
-    @Column(name = "UsuarioTelefono",length = 20, nullable = false)
-    private String UsuarioTelefono;
-    @Column(name = "UsuarioEstado",length = 20)
+    @Column(name = "UsuarioEstado",length = 20, nullable = false)
     private String UsuarioEstado;
-    @Column(name = "UsuarioPuntuacion")
-    private double UsuarioPuntuacion;
-    @Column(name = "UsuarioContadorPaseo")
-    private int UsuarioContadorPaseo;
-    @Column (name = "UsuarioHoraInicio")
-    private LocalTime UsuarioHoraInicio;
-    @Column(name = "UsuarioHoraFin")
-    private LocalTime UsuarioHoraFin;
+    @Column(name = "UsuarioFoto")
+    private String UsuarioFoto;
+
+    //de los paseadores
+
+    @Column (name = "PaseadorHoraInicio")
+    private LocalTime PaseadorHoraInicio;
+    @Column(name = "PaseadorHoraFin")
+    private LocalTime PaseadorHoraFin;
+    @Column (name = "PaseadorLatitud")
+    private double PaseadorLatitud;
+    @Column(name = "PaseadorLongitud")
+    private double PaseadorLongitud;
+    @Column(name = "PaseadorPrecio")
+    private double PaseadorPrecio;
+    @Column(name = "PaseadorSlogan", length = 50)
+    private String PaseadorSlogan;
+    @Column(name = "PaseadorEdad")
+    private int PaseadorEdad;
+    @Column(name = "PaseadorValidado")
+    private boolean PaseadorValidado;
+    @Column(name = "PaseadorDescripcion")
+    private String PaseadorDescripcion;
+    @Column(name = "PaseadorFacebook")
+    private String PaseadorFacebook;
+    @Column(name = "PaseadorInstagram")
+    private String PaseadorInstagram;
 
     public Usuario() {
     }
 
-    public Usuario(int usuarioId, String username, String password, Boolean enabled, List<Rol> roles, String usuarioNombre, String usuarioCorreo, String usuarioTelefono, String usuarioEstado, double usuarioPuntuacion, int usuarioContadorPaseo, LocalTime usuarioHoraInicio, LocalTime usuarioHoraFin) {
+    public Usuario(int usuarioId, String username, String password, Boolean enabled, List<Rol> roles, String usuarioNombre, String usuarioTelefono, String usuarioCorreo, String usuarioEstado, String usuarioFoto, LocalTime paseadorHoraInicio, LocalTime paseadorHoraFin, double paseadorLatitud, double paseadorLongitud, double paseadorPrecio, String paseadorSlogan, int paseadorEdad, boolean paseadorValidado, String paseadorDescripcion, String paseadorFacebook, String paseadorInstagram) {
         UsuarioId = usuarioId;
         this.username = username;
         this.password = password;
         this.enabled = enabled;
         this.roles = roles;
         UsuarioNombre = usuarioNombre;
-        UsuarioCorreo = usuarioCorreo;
         UsuarioTelefono = usuarioTelefono;
+        UsuarioCorreo = usuarioCorreo;
         UsuarioEstado = usuarioEstado;
-        UsuarioPuntuacion = usuarioPuntuacion;
-        UsuarioContadorPaseo = usuarioContadorPaseo;
-        UsuarioHoraInicio = usuarioHoraInicio;
-        UsuarioHoraFin = usuarioHoraFin;
+        UsuarioFoto = usuarioFoto;
+        PaseadorHoraInicio = paseadorHoraInicio;
+        PaseadorHoraFin = paseadorHoraFin;
+        PaseadorLatitud = paseadorLatitud;
+        PaseadorLongitud = paseadorLongitud;
+        PaseadorPrecio = paseadorPrecio;
+        PaseadorSlogan = paseadorSlogan;
+        PaseadorEdad = paseadorEdad;
+        PaseadorValidado = paseadorValidado;
+        PaseadorDescripcion = paseadorDescripcion;
+        PaseadorFacebook = paseadorFacebook;
+        PaseadorInstagram = paseadorInstagram;
     }
 
     public int getUsuarioId() {
         return UsuarioId;
     }
 
-    public void setUsuarioId(int id) {
-        this.UsuarioId = id;
+    public void setUsuarioId(int usuarioId) {
+        UsuarioId = usuarioId;
     }
 
     public String getUsername() {
@@ -106,20 +135,20 @@ public class Usuario implements Serializable {
         UsuarioNombre = usuarioNombre;
     }
 
-    public String getUsuarioCorreo() {
-        return UsuarioCorreo;
-    }
-
-    public void setUsuarioCorreo(String usuarioCorreo) {
-        UsuarioCorreo = usuarioCorreo;
-    }
-
     public String getUsuarioTelefono() {
         return UsuarioTelefono;
     }
 
     public void setUsuarioTelefono(String usuarioTelefono) {
         UsuarioTelefono = usuarioTelefono;
+    }
+
+    public String getUsuarioCorreo() {
+        return UsuarioCorreo;
+    }
+
+    public void setUsuarioCorreo(String usuarioCorreo) {
+        UsuarioCorreo = usuarioCorreo;
     }
 
     public String getUsuarioEstado() {
@@ -130,35 +159,99 @@ public class Usuario implements Serializable {
         UsuarioEstado = usuarioEstado;
     }
 
-    public double getUsuarioPuntuacion() {
-        return UsuarioPuntuacion;
+    public String getUsuarioFoto() {
+        return UsuarioFoto;
     }
 
-    public void setUsuarioPuntuacion(double usuarioPuntuacion) {
-        UsuarioPuntuacion = usuarioPuntuacion;
+    public void setUsuarioFoto(String usuarioFoto) {
+        UsuarioFoto = usuarioFoto;
     }
 
-    public int getUsuarioContadorPaseo() {
-        return UsuarioContadorPaseo;
+    public LocalTime getPaseadorHoraInicio() {
+        return PaseadorHoraInicio;
     }
 
-    public void setUsuarioContadorPaseo(int usuarioContadorPaseo) {
-        UsuarioContadorPaseo = usuarioContadorPaseo;
+    public void setPaseadorHoraInicio(LocalTime paseadorHoraInicio) {
+        PaseadorHoraInicio = paseadorHoraInicio;
     }
 
-    public LocalTime getUsuarioHoraInicio() {
-        return UsuarioHoraInicio;
+    public LocalTime getPaseadorHoraFin() {
+        return PaseadorHoraFin;
     }
 
-    public void setUsuarioHoraInicio(LocalTime usuarioHoraInicio) {
-        UsuarioHoraInicio = usuarioHoraInicio;
+    public void setPaseadorHoraFin(LocalTime paseadorHoraFin) {
+        PaseadorHoraFin = paseadorHoraFin;
     }
 
-    public LocalTime getUsuarioHoraFin() {
-        return UsuarioHoraFin;
+    public double getPaseadorLatitud() {
+        return PaseadorLatitud;
     }
 
-    public void setUsuarioHoraFin(LocalTime usuarioHoraFin) {
-        UsuarioHoraFin = usuarioHoraFin;
+    public void setPaseadorLatitud(double paseadorLatitud) {
+        PaseadorLatitud = paseadorLatitud;
+    }
+
+    public double getPaseadorLongitud() {
+        return PaseadorLongitud;
+    }
+
+    public void setPaseadorLongitud(double paseadorLongitud) {
+        PaseadorLongitud = paseadorLongitud;
+    }
+
+    public double getPaseadorPrecio() {
+        return PaseadorPrecio;
+    }
+
+    public void setPaseadorPrecio(double paseadorPrecio) {
+        PaseadorPrecio = paseadorPrecio;
+    }
+
+    public String getPaseadorSlogan() {
+        return PaseadorSlogan;
+    }
+
+    public void setPaseadorSlogan(String paseadorSlogan) {
+        PaseadorSlogan = paseadorSlogan;
+    }
+
+    public int getPaseadorEdad() {
+        return PaseadorEdad;
+    }
+
+    public void setPaseadorEdad(int paseadorEdad) {
+        PaseadorEdad = paseadorEdad;
+    }
+
+    public boolean isPaseadorValidado() {
+        return PaseadorValidado;
+    }
+
+    public void setPaseadorValidado(boolean paseadorValidado) {
+        PaseadorValidado = paseadorValidado;
+    }
+
+    public String getPaseadorDescripcion() {
+        return PaseadorDescripcion;
+    }
+
+    public void setPaseadorDescripcion(String paseadorDescripcion) {
+        PaseadorDescripcion = paseadorDescripcion;
+    }
+
+    public String getPaseadorFacebook() {
+        return PaseadorFacebook;
+    }
+
+    public void setPaseadorFacebook(String paseadorFacebook) {
+        PaseadorFacebook = paseadorFacebook;
+    }
+
+    public String getPaseadorInstagram() {
+        return PaseadorInstagram;
+    }
+
+    public void setPaseadorInstagram(String paseadorInstagram) {
+        PaseadorInstagram = paseadorInstagram;
     }
 }

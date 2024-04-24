@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pe.edu.upc.urpetapi.servicesinterfaces.iMascotaService;
 
 @RestController
-@RequestMapping("/Mascota")
+@RequestMapping("/mascota")
 public class MascotaController {
     private iMascotaService masS;
 }

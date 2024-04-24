@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.urpetapi.servicesinterfaces.iUsuarioService;
 
 @RestController
-@RequestMapping("/Usuario")
+@RequestMapping("/usuario")
 public class UsuarioController {
     @Autowired
     private iUsuarioService useS;

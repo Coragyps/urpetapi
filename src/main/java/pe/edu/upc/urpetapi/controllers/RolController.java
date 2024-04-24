@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.urpetapi.servicesinterfaces.iRolService;
 
 @RestController
-@RequestMapping("/Rol")
+@RequestMapping("/rol")
 public class RolController {
     @Autowired
     private iRolService rolS;

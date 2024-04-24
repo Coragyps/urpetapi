@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pe.edu.upc.urpetapi.servicesinterfaces.iBilleteraService;
 
 @RestController
-@RequestMapping("/Billetera")
+@RequestMapping("/billetera")
 public class BilleteraController {
     @Autowired
     private iBilleteraService bilS;

@@ -1,14 +1,16 @@
 package pe.edu.upc.urpetapi.dtos;
-
-
 import pe.edu.upc.urpetapi.entities.Mascota;
 import pe.edu.upc.urpetapi.entities.Usuario;
 
-public class ReservaDto {
+import java.time.LocalDate;
+import java.time.LocalTime;
 
+public class ReservaDto {
     private int ReservaId;
     private double ReservaEstado;
-    private double ReservaPuntuacion;
+    private LocalDate ReservaFecha;
+    private LocalTime ReservaHoraInicio;
+    private LocalTime ReservaHoraFin;
     private Usuario usuario;
     private Mascota mascota;
 
@@ -28,12 +30,28 @@ public class ReservaDto {
         ReservaEstado = reservaEstado;
     }
 
-    public double getReservaPuntuacion() {
-        return ReservaPuntuacion;
+    public LocalDate getReservaFecha() {
+        return ReservaFecha;
     }
 
-    public void setReservaPuntuacion(double reservaPuntuacion) {
-        ReservaPuntuacion = reservaPuntuacion;
+    public void setReservaFecha(LocalDate reservaFecha) {
+        ReservaFecha = reservaFecha;
+    }
+
+    public LocalTime getReservaHoraInicio() {
+        return ReservaHoraInicio;
+    }
+
+    public void setReservaHoraInicio(LocalTime reservaHoraInicio) {
+        ReservaHoraInicio = reservaHoraInicio;
+    }
+
+    public LocalTime getReservaHoraFin() {
+        return ReservaHoraFin;
+    }
+
+    public void setReservaHoraFin(LocalTime reservaHoraFin) {
+        ReservaHoraFin = reservaHoraFin;
     }
 
     public Usuario getUsuario() {
