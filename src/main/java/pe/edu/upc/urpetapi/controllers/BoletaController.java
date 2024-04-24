@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pe.edu.upc.urpetapi.servicesinterfaces.iBoletaService;
 
 @RestController
-@RequestMapping("/Boleta")
+@RequestMapping("/boleta")
 public class BoletaController {
     @Autowired
     private iBoletaService bolS;

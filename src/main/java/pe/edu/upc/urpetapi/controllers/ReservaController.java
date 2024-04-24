@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pe.edu.upc.urpetapi.servicesinterfaces.iReservaService;
 
 @RestController
-@RequestMapping("/Reserva")
+@RequestMapping("/reserva")
 public class ReservaController {
     private iReservaService resS;
 }

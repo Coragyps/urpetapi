@@ -12,9 +12,15 @@ public class Mascota {
     private String MacotaNombre;
     @Column(name = "MascotaFoto")
     private String MascotaFoto;
-    @Column(name = "MascotaEstado", nullable = false, length = 20)
-    private String MascotaEstado;
-    @Column(name = "MascotaHabilitado")
+    @Column(name = "MascotaRaza", length = 20)
+    private String MascotaRaza;
+    @Column(name = "MascotaEdad")
+    private int MascotaEdad;
+    @Column(name = "MascotaSexo", nullable = false, length = 20)
+    private String MascotaSexo;
+    @Column(name = "MascotaTamaño", nullable = false, length = 20)
+    private String MascotaTamaño;
+    @Column(name = "MascotaHabilitado", nullable = false)
     private Boolean MascotaHabilitado;
     @ManyToOne
     @JoinColumn(name = "UsuarioId")
@@ -23,11 +29,15 @@ public class Mascota {
     public Mascota() {
     }
 
-    public Mascota(int mascotaId, String macotaNombre, String mascotaFoto, String mascotaEstado, Usuario usuario) {
+    public Mascota(int mascotaId, String macotaNombre, String mascotaFoto, String mascotaRaza, int mascotaEdad, String mascotaSexo, String mascotaTamaño, Boolean mascotaHabilitado, Usuario usuario) {
         MascotaId = mascotaId;
         MacotaNombre = macotaNombre;
         MascotaFoto = mascotaFoto;
-        MascotaEstado = mascotaEstado;
+        MascotaRaza = mascotaRaza;
+        MascotaEdad = mascotaEdad;
+        MascotaSexo = mascotaSexo;
+        MascotaTamaño = mascotaTamaño;
+        MascotaHabilitado = mascotaHabilitado;
         this.usuario = usuario;
     }
 
@@ -55,12 +65,44 @@ public class Mascota {
         MascotaFoto = mascotaFoto;
     }
 
-    public String getMascotaEstado() {
-        return MascotaEstado;
+    public String getMascotaRaza() {
+        return MascotaRaza;
     }
 
-    public void setMascotaEstado(String mascotaEstado) {
-        MascotaEstado = mascotaEstado;
+    public void setMascotaRaza(String mascotaRaza) {
+        MascotaRaza = mascotaRaza;
+    }
+
+    public int getMascotaEdad() {
+        return MascotaEdad;
+    }
+
+    public void setMascotaEdad(int mascotaEdad) {
+        MascotaEdad = mascotaEdad;
+    }
+
+    public String getMascotaSexo() {
+        return MascotaSexo;
+    }
+
+    public void setMascotaSexo(String mascotaSexo) {
+        MascotaSexo = mascotaSexo;
+    }
+
+    public String getMascotaTamaño() {
+        return MascotaTamaño;
+    }
+
+    public void setMascotaTamaño(String mascotaTamaño) {
+        MascotaTamaño = mascotaTamaño;
+    }
+
+    public Boolean getMascotaHabilitado() {
+        return MascotaHabilitado;
+    }
+
+    public void setMascotaHabilitado(Boolean mascotaHabilitado) {
+        MascotaHabilitado = mascotaHabilitado;
     }
 
     public Usuario getUsuario() {

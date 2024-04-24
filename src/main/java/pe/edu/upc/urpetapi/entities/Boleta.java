@@ -11,6 +11,8 @@ public class Boleta {
     private int BoletaId;
     @Column(name = "BoletaMonto", nullable = false)
     private Double BoletaMonto;
+    @Column(name = "BoletaImpuesto", nullable = false)
+    private Double BoletaImpuesto;
     @Column(name = "BoletaFecha", nullable = false)
     private LocalDate BoletaFecha;
     @Column(name = "BoletaMoneda", nullable = false, length = 20)
@@ -22,9 +24,10 @@ public class Boleta {
     public Boleta() {
     }
 
-    public Boleta(int boletaId, Double boletaMonto, LocalDate boletaFecha, String boletaMoneda, Reserva reserva) {
+    public Boleta(int boletaId, Double boletaMonto, Double boletaImpuesto, LocalDate boletaFecha, String boletaMoneda, Reserva reserva) {
         BoletaId = boletaId;
         BoletaMonto = boletaMonto;
+        BoletaImpuesto = boletaImpuesto;
         BoletaFecha = boletaFecha;
         BoletaMoneda = boletaMoneda;
         this.reserva = reserva;
@@ -68,5 +71,13 @@ public class Boleta {
 
     public void setReserva(Reserva reserva) {
         this.reserva = reserva;
+    }
+
+    public Double getBoletaImpuesto() {
+        return BoletaImpuesto;
+    }
+
+    public void setBoletaImpuesto(Double boletaImpuesto) {
+        BoletaImpuesto = boletaImpuesto;
     }
 }
