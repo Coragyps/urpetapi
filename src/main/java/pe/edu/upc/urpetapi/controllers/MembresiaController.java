@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pe.edu.upc.urpetapi.servicesinterfaces.iMembresiaService;
 
 @RestController
-@RequestMapping("/Membresia")
+@RequestMapping("/membresia")
 public class MembresiaController {
     private iMembresiaService memS;
 }

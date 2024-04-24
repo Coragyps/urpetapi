@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pe.edu.upc.urpetapi.servicesinterfaces.iComentarioService;
 
 @RestController
-@RequestMapping("/Comentario")
+@RequestMapping("/comentario")
 public class ComentarioController {
     private iComentarioService comS;
 }

@@ -10,6 +10,8 @@ public class Comentario {
     private int ComentarioId;
     @Column(name = "ComentarioTexto", nullable = false, length = 200)
     private String ComentarioTexto;
+    @Column(name = "ComentarioPuntuacion",nullable = false)
+    private double ComentarioPuntuacion;
     @ManyToOne
     @JoinColumn(name = "ReservaId")
     private Reserva reserva;
@@ -17,9 +19,10 @@ public class Comentario {
     public Comentario() {
     }
 
-    public Comentario(int comentarioId, String comentarioTexto, Reserva reserva) {
+    public Comentario(int comentarioId, String comentarioTexto, double comentarioPuntuacion, Reserva reserva) {
         ComentarioId = comentarioId;
         ComentarioTexto = comentarioTexto;
+        ComentarioPuntuacion = comentarioPuntuacion;
         this.reserva = reserva;
     }
 
@@ -37,6 +40,14 @@ public class Comentario {
 
     public void setComentarioTexto(String comentarioTexto) {
         ComentarioTexto = comentarioTexto;
+    }
+
+    public double getComentarioPuntuacion() {
+        return ComentarioPuntuacion;
+    }
+
+    public void setComentarioPuntuacion(double comentarioPuntuacion) {
+        ComentarioPuntuacion = comentarioPuntuacion;
     }
 
     public Reserva getReserva() {

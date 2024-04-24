@@ -17,7 +17,7 @@ public class Membresia {
     @Column(name = "MembresiaEstado", nullable = false, length = 20)
     private String MembresiaEstado;
     @ManyToOne
-    @JoinColumn(name = "UsuariId")
+    @JoinColumn(name = "UsuarioId")
     private Usuario usuario;
 
     public Membresia() {
