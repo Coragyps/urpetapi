@@ -1,27 +1,43 @@
 package pe.edu.upc.urpetapi.dtos;
 
+
 import java.time.LocalTime;
 
-public class UsuarioDto {
+public class ListarPaseadoresDTO {
     private int UsuarioId;
-    private String username;
-    private String password;
-    private Boolean enabled;
     private String UsuarioNombre;
+
     private String UsuarioTelefono;
+
     private String UsuarioCorreo;
+
     private String UsuarioEstado;
+
     private String UsuarioFoto;
+
+    //de los paseadores
+
+
     private LocalTime PaseadorHoraInicio;
+
     private LocalTime PaseadorHoraFin;
+
     private double PaseadorLatitud;
+
     private double PaseadorLongitud;
+
     private double PaseadorPrecio;
+
     private String PaseadorSlogan;
+
     private int PaseadorEdad;
+
     private boolean PaseadorValidado;
+
     private String PaseadorDescripcion;
+
     private String PaseadorFacebook;
+
     private String PaseadorInstagram;
 
     public int getUsuarioId() {
@@ -30,30 +46,6 @@ public class UsuarioDto {
 
     public void setUsuarioId(int usuarioId) {
         UsuarioId = usuarioId;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
     }
 
     public String getUsuarioNombre() {
