@@ -1,5 +1,6 @@
 package pe.edu.upc.urpetapi.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity

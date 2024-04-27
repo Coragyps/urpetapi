@@ -12,7 +12,7 @@ public class Reserva {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ReservaId;
     @Column(name = "ReservaEstado",nullable = false)
-    private double ReservaEstado;
+    private String ReservaEstado;
     @Column(name = "ReservaFecha", nullable = false)
     private LocalDate ReservaFecha;
     @Column(name = "ReservaHoraInicio", nullable = false)
@@ -20,8 +20,8 @@ public class Reserva {
     @Column(name = "ReservaHoraFin", nullable = false)
     private LocalTime ReservaHoraFin;
     @ManyToOne
-    @JoinColumn(name ="UsuarioId")
-    private Usuario usuario;
+    @JoinColumn(name ="PaseadorId")
+    private Paseador paseador;
     @ManyToOne
     @JoinColumn(name = "MascotaId")
     private Mascota mascota;
@@ -29,13 +29,13 @@ public class Reserva {
     public Reserva() {
     }
 
-    public Reserva(int reservaId, double reservaEstado, LocalDate reservaFecha, LocalTime reservaHoraInicio, LocalTime reservaHoraFin, Usuario usuario, Mascota mascota) {
+    public Reserva(int reservaId, String reservaEstado, LocalDate reservaFecha, LocalTime reservaHoraInicio, LocalTime reservaHoraFin, Paseador paseador, Mascota mascota) {
         ReservaId = reservaId;
         ReservaEstado = reservaEstado;
         ReservaFecha = reservaFecha;
         ReservaHoraInicio = reservaHoraInicio;
         ReservaHoraFin = reservaHoraFin;
-        this.usuario = usuario;
+        this.paseador = paseador;
         this.mascota = mascota;
     }
 
@@ -47,11 +47,11 @@ public class Reserva {
         ReservaId = reservaId;
     }
 
-    public double getReservaEstado() {
+    public String getReservaEstado() {
         return ReservaEstado;
     }
 
-    public void setReservaEstado(double reservaEstado) {
+    public void setReservaEstado(String reservaEstado) {
         ReservaEstado = reservaEstado;
     }
 
@@ -79,12 +79,12 @@ public class Reserva {
         ReservaHoraFin = reservaHoraFin;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Paseador getPaseador() {
+        return paseador;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setPaseador(Paseador paseador) {
+        this.paseador = paseador;
     }
 
     public Mascota getMascota() {

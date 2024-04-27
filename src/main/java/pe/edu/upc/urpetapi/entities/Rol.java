@@ -5,28 +5,29 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "Rol", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "rol"})})
+@Table(name = "Rol")
 public class Rol implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int RolId;
+    private int id;
 
-    private String RolTipo;
+    private String rol;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario user;
 
     public Rol() {
     }
 
-    public Rol(int rolId, String rolTipo, Usuario user) {
-        RolId = rolId;
-        RolTipo = rolTipo;
+    public Rol(int id, String rol, Usuario user) {
+        this.id = id;
+        this.rol = rol;
         this.user = user;
     }
+
 
     public Usuario getUser() {
         return user;
@@ -37,19 +38,19 @@ public class Rol implements Serializable {
     }
 
     public int getId() {
-        return RolId;
+        return id;
     }
 
     public void setId(int id) {
-        this.RolId = id;
+        this.id = id;
     }
 
-    public String getRolTipo() {
-        return RolTipo;
+    public String getRol() {
+        return rol;
     }
 
-    public void setRolTipo(String rol) {
-        this.RolTipo = rol;
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
 }

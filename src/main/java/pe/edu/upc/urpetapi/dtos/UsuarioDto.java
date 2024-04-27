@@ -1,6 +1,14 @@
 package pe.edu.upc.urpetapi.dtos;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import pe.edu.upc.urpetapi.entities.Rol;
+
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 public class UsuarioDto {
     private int UsuarioId;
@@ -10,19 +18,7 @@ public class UsuarioDto {
     private String UsuarioNombre;
     private String UsuarioTelefono;
     private String UsuarioCorreo;
-    private String UsuarioEstado;
     private String UsuarioFoto;
-    private LocalTime PaseadorHoraInicio;
-    private LocalTime PaseadorHoraFin;
-    private double PaseadorLatitud;
-    private double PaseadorLongitud;
-    private double PaseadorPrecio;
-    private String PaseadorSlogan;
-    private int PaseadorEdad;
-    private boolean PaseadorValidado;
-    private String PaseadorDescripcion;
-    private String PaseadorFacebook;
-    private String PaseadorInstagram;
 
     public int getUsuarioId() {
         return UsuarioId;
@@ -80,107 +76,11 @@ public class UsuarioDto {
         UsuarioCorreo = usuarioCorreo;
     }
 
-    public String getUsuarioEstado() {
-        return UsuarioEstado;
-    }
-
-    public void setUsuarioEstado(String usuarioEstado) {
-        UsuarioEstado = usuarioEstado;
-    }
-
     public String getUsuarioFoto() {
         return UsuarioFoto;
     }
 
     public void setUsuarioFoto(String usuarioFoto) {
         UsuarioFoto = usuarioFoto;
-    }
-
-    public LocalTime getPaseadorHoraInicio() {
-        return PaseadorHoraInicio;
-    }
-
-    public void setPaseadorHoraInicio(LocalTime paseadorHoraInicio) {
-        PaseadorHoraInicio = paseadorHoraInicio;
-    }
-
-    public LocalTime getPaseadorHoraFin() {
-        return PaseadorHoraFin;
-    }
-
-    public void setPaseadorHoraFin(LocalTime paseadorHoraFin) {
-        PaseadorHoraFin = paseadorHoraFin;
-    }
-
-    public double getPaseadorLatitud() {
-        return PaseadorLatitud;
-    }
-
-    public void setPaseadorLatitud(double paseadorLatitud) {
-        PaseadorLatitud = paseadorLatitud;
-    }
-
-    public double getPaseadorLongitud() {
-        return PaseadorLongitud;
-    }
-
-    public void setPaseadorLongitud(double paseadorLongitud) {
-        PaseadorLongitud = paseadorLongitud;
-    }
-
-    public double getPaseadorPrecio() {
-        return PaseadorPrecio;
-    }
-
-    public void setPaseadorPrecio(double paseadorPrecio) {
-        PaseadorPrecio = paseadorPrecio;
-    }
-
-    public String getPaseadorSlogan() {
-        return PaseadorSlogan;
-    }
-
-    public void setPaseadorSlogan(String paseadorSlogan) {
-        PaseadorSlogan = paseadorSlogan;
-    }
-
-    public int getPaseadorEdad() {
-        return PaseadorEdad;
-    }
-
-    public void setPaseadorEdad(int paseadorEdad) {
-        PaseadorEdad = paseadorEdad;
-    }
-
-    public boolean isPaseadorValidado() {
-        return PaseadorValidado;
-    }
-
-    public void setPaseadorValidado(boolean paseadorValidado) {
-        PaseadorValidado = paseadorValidado;
-    }
-
-    public String getPaseadorDescripcion() {
-        return PaseadorDescripcion;
-    }
-
-    public void setPaseadorDescripcion(String paseadorDescripcion) {
-        PaseadorDescripcion = paseadorDescripcion;
-    }
-
-    public String getPaseadorFacebook() {
-        return PaseadorFacebook;
-    }
-
-    public void setPaseadorFacebook(String paseadorFacebook) {
-        PaseadorFacebook = paseadorFacebook;
-    }
-
-    public String getPaseadorInstagram() {
-        return PaseadorInstagram;
-    }
-
-    public void setPaseadorInstagram(String paseadorInstagram) {
-        PaseadorInstagram = paseadorInstagram;
     }
 }

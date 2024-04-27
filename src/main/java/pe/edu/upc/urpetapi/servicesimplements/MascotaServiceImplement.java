@@ -13,12 +13,12 @@ public class MascotaServiceImplement implements iMascotaService {
     @Autowired
     private iMascotaRepository masR;
 
-    @Override
+    @Override//---------------------------HU08: Revisar Mascotas Registradas
     public List<Mascota> MascotaPorUsuario(String username) {
         return masR.MascotaPorUsuario(username);
     }
 
-    @Override
+    @Override//---------------------------HU07: Registrar Mascota
     public void RegistrarMascota(Mascota mascota) {
         masR.save(mascota);
     }

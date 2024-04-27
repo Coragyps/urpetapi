@@ -4,7 +4,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.urpetapi.dtos.ListarPaseadoresDTO;
+import pe.edu.upc.urpetapi.dtos.ListarPaseadoresDto;
+import pe.edu.upc.urpetapi.dtos.UsuarioDto;
+import pe.edu.upc.urpetapi.entities.Usuario;
 import pe.edu.upc.urpetapi.servicesinterfaces.iUsuarioService;
 
 import java.util.List;
@@ -18,11 +20,19 @@ public class UsuarioController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @GetMapping("/paseadores/listar")
-    public List<ListarPaseadoresDTO > ListarPaseadores(){
-        return useS.ListarPaseadores().stream().map(y->{
-            ModelMapper m = new ModelMapper();
-            return m.map(y, ListarPaseadoresDTO.class);
-        }).collect(Collectors.toList());
-    };
+    @PostMapping("/registrar")//---------------------------HU18: Registrarse en la Aplicacion
+    public void Registrar(@RequestBody UsuarioDto usuarioDto) {
+        ModelMapper m = new ModelMapper();
+        Usuario u = m.map(usuarioDto, Usuario.class);
+        String encodedPassword = passwordEncoder.encode(u.getPassword());
+        u.setPassword(encodedPassword);
+        useS.Registrar(u);
+    }
+
+    @PutMapping("/modificar")//---------------------------HU01: Modificar Cuenta
+    public void Modificar(@RequestBody UsuarioDto usuarioDto) {
+        ModelMapper m = new ModelMapper();
+        Usuario u = m.map(usuarioDto, Usuario.class);
+        useS.Registrar(u);
+    }
 }

@@ -1,52 +1,31 @@
 package pe.edu.upc.urpetapi.dtos;
 
+import pe.edu.upc.urpetapi.entities.Usuario;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class ListarPaseadoresDTO {
-    private int UsuarioId;
+public class ListarPaseadoresDto {
     private String UsuarioNombre;
-
     private String UsuarioTelefono;
-
     private String UsuarioCorreo;
-
-    private String UsuarioEstado;
-
     private String UsuarioFoto;
 
     //de los paseadores
-
-
+    private int PaseadorId;
+    private String PaseadorEstado;
     private LocalTime PaseadorHoraInicio;
-
     private LocalTime PaseadorHoraFin;
-
     private double PaseadorLatitud;
-
     private double PaseadorLongitud;
-
     private double PaseadorPrecio;
-
     private String PaseadorSlogan;
-
-    private int PaseadorEdad;
-
+    private LocalDate PaseadorEdad;
     private boolean PaseadorValidado;
-
     private String PaseadorDescripcion;
-
     private String PaseadorFacebook;
-
     private String PaseadorInstagram;
-
-    public int getUsuarioId() {
-        return UsuarioId;
-    }
-
-    public void setUsuarioId(int usuarioId) {
-        UsuarioId = usuarioId;
-    }
+    private Usuario usuario;
 
     public String getUsuarioNombre() {
         return UsuarioNombre;
@@ -72,20 +51,28 @@ public class ListarPaseadoresDTO {
         UsuarioCorreo = usuarioCorreo;
     }
 
-    public String getUsuarioEstado() {
-        return UsuarioEstado;
-    }
-
-    public void setUsuarioEstado(String usuarioEstado) {
-        UsuarioEstado = usuarioEstado;
-    }
-
     public String getUsuarioFoto() {
         return UsuarioFoto;
     }
 
     public void setUsuarioFoto(String usuarioFoto) {
         UsuarioFoto = usuarioFoto;
+    }
+
+    public int getPaseadorId() {
+        return PaseadorId;
+    }
+
+    public void setPaseadorId(int paseadorId) {
+        PaseadorId = paseadorId;
+    }
+
+    public String getPaseadorEstado() {
+        return PaseadorEstado;
+    }
+
+    public void setPaseadorEstado(String paseadorEstado) {
+        PaseadorEstado = paseadorEstado;
     }
 
     public LocalTime getPaseadorHoraInicio() {
@@ -136,11 +123,11 @@ public class ListarPaseadoresDTO {
         PaseadorSlogan = paseadorSlogan;
     }
 
-    public int getPaseadorEdad() {
+    public LocalDate getPaseadorEdad() {
         return PaseadorEdad;
     }
 
-    public void setPaseadorEdad(int paseadorEdad) {
+    public void setPaseadorEdad(LocalDate paseadorEdad) {
         PaseadorEdad = paseadorEdad;
     }
 
@@ -174,5 +161,13 @@ public class ListarPaseadoresDTO {
 
     public void setPaseadorInstagram(String paseadorInstagram) {
         PaseadorInstagram = paseadorInstagram;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
