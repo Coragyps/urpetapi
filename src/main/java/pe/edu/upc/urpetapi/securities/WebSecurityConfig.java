@@ -59,7 +59,9 @@ public class WebSecurityConfig {
         httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req -> req
-                        .requestMatchers(antMatcher("/auth/login"), antMatcher("/swagger-ui/**"), antMatcher("/v3/api-docs/**"), antMatcher("/usuario/cliente/registrar"), antMatcher("/usuario/paseador/registrar")).permitAll()
+                        .requestMatchers(antMatcher("/login")).permitAll()
+                        .requestMatchers(antMatcher("/swagger-ui/**")).permitAll()
+                        .requestMatchers(antMatcher("/v3/api-docs/**")).permitAll()
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())
@@ -69,5 +71,8 @@ public class WebSecurityConfig {
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();
     }
+
+
+
 
 }

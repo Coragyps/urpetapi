@@ -13,6 +13,7 @@ import pe.edu.upc.urpetapi.repositories.iUsuarioRepository;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
     @Autowired
@@ -27,11 +28,13 @@ public class JwtUserDetailsService implements UserDetailsService {
         }
 
         List<GrantedAuthority> roles = new ArrayList<>();
+
         user.getRoles().forEach(rol -> {
-            roles.add(new SimpleGrantedAuthority(rol.getRolTipo()));
+            roles.add(new SimpleGrantedAuthority(rol.getRol()));
         });
 
         UserDetails ud = new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), user.getEnabled(), true, true, true, roles);
+
         return ud;
     }
 }
