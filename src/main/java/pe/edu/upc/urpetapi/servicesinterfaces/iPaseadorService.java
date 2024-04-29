@@ -10,9 +10,9 @@ public interface iPaseadorService {
 
     public void Registrar(Paseador paseador);//---------------------------HU18: Registrarse en la Aplicacion
 
-    public List<ListarPaseadoresDto> InfoPaseador(@Param("username") String username);//---------------------------HU27: Revisar Perfil
+    public List<String[]> InfoPaseador(int id);//---------------------------HU27: Revisar Perfil
 
-    public List<ListarPaseadoresDto> ListarPaseadores();//---------------------------HU09: Revisar Paseadores Disponibles
+    public List<String[]> ListarPaseadores();//---------------------------HU09: Revisar Paseadores Disponibles
 
-    public List<ListarPaseadoresDto> PaseadorMasBarato();//---------------------------HU10: Tarifa mas Accesible
+    public List<String[]> PaseadorMasBarato();//---------------------------HU10: Tarifa mas Accesible
 }

@@ -15,12 +15,12 @@ public class PaseadorServiceImplement implements iPaseadorService {
     private iPaseadorRepository pasR;
 
     @Override//---------------------------HU10: Tarifa mas Accesible
-    public List<ListarPaseadoresDto> PaseadorMasBarato() {
+    public List<String[]> PaseadorMasBarato() {
         return pasR.PaseadorMasBarato();
     }
 
     @Override//---------------------------HU09: Revisar Paseadores Disponibles
-    public List<ListarPaseadoresDto> ListarPaseadores() {
+    public List<String[]> ListarPaseadores() {
         return pasR.ListarPaseadores();
     }
 
@@ -30,7 +30,7 @@ public class PaseadorServiceImplement implements iPaseadorService {
     }
 
     @Override//---------------------------HU27: Revisar Perfil
-    public List<ListarPaseadoresDto> InfoPaseador(String username) {
-        return pasR.InfoPaseador(username);
+    public List<String[]> InfoPaseador(int id) {
+        return pasR.InfoPaseador(id);
     }
 }
