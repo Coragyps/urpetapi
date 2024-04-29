@@ -25,7 +25,6 @@ public class ListarPaseadoresDto {
     private String PaseadorDescripcion;
     private String PaseadorFacebook;
     private String PaseadorInstagram;
-    private Usuario usuario;
 
     public String getUsuarioNombre() {
         return UsuarioNombre;
@@ -161,13 +160,5 @@ public class ListarPaseadoresDto {
 
     public void setPaseadorInstagram(String paseadorInstagram) {
         PaseadorInstagram = paseadorInstagram;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 }

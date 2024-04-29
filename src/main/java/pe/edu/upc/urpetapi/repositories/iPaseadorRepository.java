@@ -13,17 +13,17 @@ import java.util.List;
 public interface iPaseadorRepository extends JpaRepository<Paseador, Integer> {
     @Query(value = "select u.usuario_nombre, u.usuario_telefono, u.usuario_correo, u.usuario_foto, p.* from paseador p \n " +
             "join usuario u on u.usuario_id =p.usuario_id \n " +
-            "where p.paseador_estado = 'DISPONIBLE'", nativeQuery = true)
-    public List<ListarPaseadoresDto> ListarPaseadores();//---------------------------HU09: Revisar Paseadores Disponibles
+            "where p.paseador_estado = 'DISPONIBLE' ", nativeQuery = true)
+    public List<String[]> ListarPaseadores();//---------------------------HU09: Revisar Paseadores Disponibles
 
     @Query(value = "select u.usuario_nombre, u.usuario_telefono, u.usuario_correo, u.usuario_foto, p.* from paseador p \n " +
             "join usuario u on u.usuario_id =p.usuario_id \n " +
-            "where u.username = :username", nativeQuery = true)
-    public List<ListarPaseadoresDto> InfoPaseador(@Param("username") String username);//---------------------------HU27: Revisar Perfil
+            "where p.paseador_id = :id", nativeQuery = true)
+    public List<String[]> InfoPaseador(@Param("id") int id);//---------------------------HU27: Revisar Perfil
 
     @Query(value = "select u.usuario_nombre, u.usuario_telefono, u.usuario_correo, u.usuario_foto, p.* from paseador p \n " +
             "join usuario u on u.usuario_id =p.usuario_id \n " +
             "where p.paseador_estado = 'DISPONIBLE' \n " +
             "order by p.paseador_precio asc limit 1", nativeQuery = true)
-    public List<ListarPaseadoresDto> PaseadorMasBarato();//---------------------------HU10: Tarifa mas Accesible
+    public List<String[]> PaseadorMasBarato();//---------------------------HU10: Tarifa mas Accesible
 }
