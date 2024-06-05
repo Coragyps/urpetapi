@@ -13,54 +13,53 @@ public class ReservaServiceImplement implements iReservaService {
     @Autowired
     private iReservaRepository resR;
 
-    @Override//---------------------------HU14: Revisar Historial de Paseos Adquiridos
-    public List<Reserva> ReservaPorCliente(String username) {
-        return resR.ReservaPorCliente(username);
-    }
-
-    @Override//---------------------------HU04: Revisar Historial de Paseos Completados
-    public List<Reserva> ReservaPorPaseador(String username) {
-        return resR.ReservaPorPaseador(username);
-    }
-
-    @Override//---------------------------HU17: Cantidad de Paseos por Cliente
-    public List<String[]> PaseosporCliente(String username) {
-        return resR.PaseosporCliente(username);
-    }
-
-    @Override//---------------------------HU11: Solicitar Paseo
-    public void SolicitarPaseo(Reserva reserva) {
+    @Override
+    public void insert(Reserva reserva) {
         resR.save(reserva);
     }
 
-    @Override//---------------------------HU02: Revisar Paseos Pendientes
-    public List<Reserva> PaseosPendientes(String username) {
-        return resR.PaseosPendientes(username);
+    @Override
+    public void delete(int id) {
+        resR.deleteById(id);
     }
 
-    @Override//---------------------------HU35: Revisar Paseos Aceptados
-    public List<Reserva> PaseosAceptados(String username) {
-        return resR.PaseosAceptados(username);
+    @Override
+    public List<Reserva> list() {
+        return resR.findAll();
     }
 
-    @Override//---------------------------HU36: Revisar Paseos Rechazados
-    public List<Reserva> PaseosRechazados(String username) {
-        return resR.PaseosRechazados(username);
+    @Override
+    public void cambiarEstado(int idreserva, String estado) {
+        resR.Estado(idreserva,estado);
     }
 
-    @Override//---------------------------HU03: Confirmar Paseo
-    public void Rechazar(int idreserva) {
-        resR.Rechazar(idreserva);
+    @Override
+    public Reserva listId(int idreserva) {
+        return resR.findById(idreserva).orElse(new Reserva());
     }
 
-    @Override//---------------------------HU03: Confirmar Paseo
-    public void Aceptar(int idreserva) {
-        resR.Aceptar(idreserva);
+    @Override
+    public List<Reserva> listEstadoUsuario(int idusuario, String estado) {
+        return resR.EstadoUsuario(idusuario,estado);
     }
 
-    @Override//---------------------------HU28: Terminar Paseo
-    public void Finalizar(int idreserva) {
-        resR.Finalizar(idreserva);
+    @Override
+    public List<Reserva> listUsuario(int idusuario) {
+        return resR.TodoUsuario(idusuario);
     }
 
+    @Override
+    public List<Reserva> listEstadoPaseador(int idpaseador, String estado) {
+        return resR.EstadoPaseador(idpaseador,estado);
+    }
+
+    @Override
+    public List<Reserva> listPaseador(int idpaseador) {
+        return resR.TodoPaseador(idpaseador);
+    }
+
+    @Override
+    public List<String[]> listClientesPaseador(int idpaseador) {
+        return resR.PaseosporCliente(idpaseador);
+    }
 }

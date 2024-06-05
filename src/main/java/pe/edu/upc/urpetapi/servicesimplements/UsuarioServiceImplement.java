@@ -15,8 +15,22 @@ public class UsuarioServiceImplement implements iUsuarioService {
     private iUsuarioRepository useR;
 
     @Override//---------------------------HU18: Registrarse en la Aplicacion
-    public void Registrar(Usuario usuario) {
+    public void insert(Usuario usuario) {
         useR.save(usuario);
     }
 
+    @Override
+    public void delete(int id) {
+        useR.deleteById(id);
+    }
+
+    @Override
+    public List<Usuario> list() {
+        return useR.findAll();
+    }
+
+    @Override
+    public Usuario listId(int id) {
+        return useR.findById(id).orElse(new Usuario());
+    }
 }
