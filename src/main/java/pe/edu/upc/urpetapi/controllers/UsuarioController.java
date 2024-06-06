@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.urpetapi.dtos.ListarPaseadoresDto;
+import pe.edu.upc.urpetapi.dtos.ReservaDto;
 import pe.edu.upc.urpetapi.dtos.UsuarioDto;
 import pe.edu.upc.urpetapi.entities.Usuario;
 import pe.edu.upc.urpetapi.servicesinterfaces.iUsuarioService;
@@ -20,19 +21,41 @@ public class UsuarioController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @PostMapping("/registrar")//---------------------------HU18: Registrarse en la Aplicacion
-    public void Registrar(@RequestBody UsuarioDto usuarioDto) {
+    @PostMapping//---------------------------HU18: Registrarse en la Aplicacion
+    public void CREATE(@RequestBody UsuarioDto usuarioDto) {
         ModelMapper m = new ModelMapper();
         Usuario u = m.map(usuarioDto, Usuario.class);
         String encodedPassword = passwordEncoder.encode(u.getPassword());
         u.setPassword(encodedPassword);
-        useS.Registrar(u);
+        useS.insert(u);
     }
 
-    @PutMapping("/modificar")//---------------------------HU01: Modificar Cuenta
-    public void Modificar(@RequestBody UsuarioDto usuarioDto) {
+    @GetMapping
+    public List<UsuarioDto> READ(){
+        return useS.list().stream().map(y->{
+            ModelMapper m=new ModelMapper();
+            return m.map(y,UsuarioDto.class);
+        }).collect(Collectors.toList());
+    }
+
+    @PutMapping//---------------------------HU01: Modificar Cuenta
+    public void UPDATE(@RequestBody UsuarioDto usuarioDto) {
         ModelMapper m = new ModelMapper();
         Usuario u = m.map(usuarioDto, Usuario.class);
-        useS.Registrar(u);
+        String encodedPassword = passwordEncoder.encode(u.getPassword());
+        u.setPassword(encodedPassword);
+        useS.insert(u);
+    }
+
+    @DeleteMapping("/{id}")
+    public void DELETE(@PathVariable("id") Integer id) {
+        useS.delete(id);
+    }
+
+    @GetMapping("/{id}")
+    public UsuarioDto READID(@PathVariable("id") Integer id){
+        ModelMapper m = new ModelMapper();
+        UsuarioDto dto = m.map(useS.listId(id),UsuarioDto.class);
+        return dto;
     }
 }

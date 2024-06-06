@@ -6,6 +6,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.urpetapi.dtos.PaseosPorClientesDto;
 import pe.edu.upc.urpetapi.dtos.ReservaDto;
+import pe.edu.upc.urpetapi.dtos.UsuarioDto;
 import pe.edu.upc.urpetapi.entities.Reserva;
 import pe.edu.upc.urpetapi.servicesinterfaces.iReservaService;
 
@@ -19,81 +20,91 @@ public class ReservaController {
     @Autowired
     private iReservaService resS;
 
-    @PostMapping("/solicitar")//---------------------------HU11: Solicitar Paseo
+    @PostMapping//---------------------------HU11: Solicitar Paseo
     @PreAuthorize("hasAuthority('ADMIN') || hasAuthority('CLIENTE')")
-    public void SolicitarPaseo(@RequestBody ReservaDto reservaDto) {
+    public void CREATE(@RequestBody ReservaDto reservaDto) {
         ModelMapper m = new ModelMapper();
         Reserva rP = m.map(reservaDto, Reserva.class);
-        resS.SolicitarPaseo(rP);
+        resS.insert(rP);
     }
 
-    @PutMapping("/rechazar/{id}")//---------------------------HU03: Confirmar Paseo
+    @GetMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public List<ReservaDto> READ(){
+        return resS.list().stream().map(y->{
+            ModelMapper m=new ModelMapper();
+            return m.map(y, ReservaDto.class);
+        }).collect(Collectors.toList());
+    }
+
+    @PutMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public void UPDATE(@RequestBody ReservaDto reservaDto) {
+        ModelMapper m = new ModelMapper();
+        Reserva rP = m.map(reservaDto, Reserva.class);
+        resS.insert(rP);
+    }
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public void DELETE(@PathVariable("id") Integer id) {
+        resS.delete(id);
+    }
+
+    @PutMapping("/{id}/{estado}")//---------------------------HU03: Confirmar Paseo
     @PreAuthorize("hasAuthority('ADMIN') || hasAuthority('PASEADOR')")
-    public void RechazarPaseo(@PathVariable("id") Integer id) {
-        resS.Rechazar(id);
+    public void EstadoPaseo(@PathVariable("id") Integer id, @PathVariable("estado") String estado) {
+        resS.cambiarEstado(id,estado);
     }
 
-    @PutMapping("/aceptar/{id}")//---------------------------HU03: Confirmar Paseo
-    @PreAuthorize("hasAuthority('ADMIN') || hasAuthority('PASEADOR')")
-    public void AceptarPaseo(@PathVariable("id") Integer id) {
-        resS.Aceptar(id);
+    @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public ReservaDto READID(@PathVariable("id") Integer id){
+        ModelMapper m=new ModelMapper();
+        ReservaDto dto=m.map(resS.listId(id),ReservaDto.class);
+        return dto;
     }
 
-    @PutMapping("/finalizar/{id}")//---------------------------HU28: Terminar Paseo
-    @PreAuthorize("hasAuthority('ADMIN') || hasAuthority('PASEADOR')")
-    public void FinalizarPaseo(@PathVariable("id") Integer id) {
-        resS.Finalizar(id);
-    }
-
-    @GetMapping("/historial/solicitados")//---------------------------HU14: Revisar Historial de Paseos Adquiridos
+    @GetMapping("/usuario/{id}/{estado}")
     @PreAuthorize("hasAuthority('ADMIN') || hasAuthority('CLIENTE')")
-    public List<ReservaDto> ReservaPorCliente(@RequestParam String username) {
-        return resS.ReservaPorCliente(username).stream().map(y -> {
+    public List<ReservaDto> ReservasPorEstadoPorCliente(@PathVariable("id") Integer id, @PathVariable("estado") String estado) {
+        return resS.listEstadoUsuario(id,estado).stream().map(y->{
             ModelMapper m = new ModelMapper();
-            return m.map(y, ReservaDto.class);
+            return m.map(y,ReservaDto.class);
         }).collect(Collectors.toList());
     }
 
-    @GetMapping("/historial/finalizados")//---------------------------HU04: Revisar Historial de Paseos Completados
-    @PreAuthorize("hasAuthority('ADMIN') || hasAuthority('PASEADOR')")
-    public List<ReservaDto> ReservaPorPaseador(@RequestParam String username) {
-        return resS.ReservaPorPaseador(username).stream().map(y -> {
+    @GetMapping("/usuario/{id}")
+    @PreAuthorize("hasAuthority('ADMIN') || hasAuthority('CLIENTE')")
+    public List<ReservaDto> ReservasPorCliente(@PathVariable("id") Integer id) {
+        return resS.listUsuario(id).stream().map(y->{
             ModelMapper m = new ModelMapper();
-            return m.map(y, ReservaDto.class);
+            return m.map(y,ReservaDto.class);
         }).collect(Collectors.toList());
     }
 
-    @GetMapping("/historial/pendientes")//---------------------------HU02: Revisar Paseos Pendientes
+    @GetMapping("/paseador/{id}/{estado}")
     @PreAuthorize("hasAuthority('ADMIN') || hasAuthority('PASEADOR')")
-    public List<ReservaDto> PaseosPendientes(@RequestParam String username) {
-        return resS.PaseosPendientes(username).stream().map(y -> {
+    public List<ReservaDto> ReservasPorEstadoPorPaseador(@PathVariable("id") Integer id, @PathVariable("estado") String estado) {
+        return resS.listEstadoPaseador(id,estado).stream().map(y->{
             ModelMapper m = new ModelMapper();
-            return m.map(y, ReservaDto.class);
+            return m.map(y,ReservaDto.class);
         }).collect(Collectors.toList());
     }
 
-    @GetMapping("/historial/rechazados")//---------------------------HU36: Revisar Paseos Rechazados
+    @GetMapping("/paseador/{id}")
     @PreAuthorize("hasAuthority('ADMIN') || hasAuthority('PASEADOR')")
-    public List<ReservaDto> PaseosRechazados(@RequestParam String username) {
-        return resS.PaseosRechazados(username).stream().map(y -> {
+    public List<ReservaDto> ReservasPorPaseador(@PathVariable("id") Integer id) {
+        return resS.listPaseador(id).stream().map(y->{
             ModelMapper m = new ModelMapper();
-            return m.map(y, ReservaDto.class);
+            return m.map(y,ReservaDto.class);
         }).collect(Collectors.toList());
     }
 
-    @GetMapping("/historial/aceptados")//---------------------------HU35: Revisar Paseos Aceptados
+    @GetMapping("/paseador/{id}/clientes")
     @PreAuthorize("hasAuthority('ADMIN') || hasAuthority('PASEADOR')")
-    public List<ReservaDto> PaseosAceptados(@RequestParam String username) {
-        return resS.PaseosAceptados(username).stream().map(y -> {
-            ModelMapper m = new ModelMapper();
-            return m.map(y, ReservaDto.class);
-        }).collect(Collectors.toList());
-    }
-
-    @GetMapping("/cliente")//---------------------------HU17: Cantidad de Paseos por Cliente
-    @PreAuthorize("hasAuthority('ADMIN') || hasAuthority('PASEADOR')")
-    public List<PaseosPorClientesDto> PaseosPorCliente(@RequestParam String username) {
-        List<String[]> filaLista = resS.PaseosporCliente(username);
+    public List<PaseosPorClientesDto> CantidadReservasPorClientePorPaseador(@PathVariable("id") Integer id) {
+        List<String[]> filaLista = resS.listClientesPaseador(id);
         List<PaseosPorClientesDto> dtoLista = new ArrayList<>();
 
         for (String[] columna : filaLista) {
@@ -104,4 +115,8 @@ public class ReservaController {
         }
         return dtoLista;
     }
+
+
+
+
 }
