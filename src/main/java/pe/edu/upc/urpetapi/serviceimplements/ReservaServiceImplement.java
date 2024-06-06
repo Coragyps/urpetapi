@@ -1,10 +1,10 @@
-package pe.edu.upc.urpetapi.servicesimplements;
+package pe.edu.upc.urpetapi.serviceimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.urpetapi.entities.Reserva;
 import pe.edu.upc.urpetapi.repositories.iReservaRepository;
-import pe.edu.upc.urpetapi.servicesinterfaces.iReservaService;
+import pe.edu.upc.urpetapi.services.iReservaService;
 
 import java.util.List;
 
@@ -39,18 +39,8 @@ public class ReservaServiceImplement implements iReservaService {
     }
 
     @Override
-    public List<Reserva> listEstadoUsuario(int idusuario, String estado) {
-        return resR.EstadoUsuario(idusuario,estado);
-    }
-
-    @Override
     public List<Reserva> listUsuario(int idusuario) {
         return resR.TodoUsuario(idusuario);
-    }
-
-    @Override
-    public List<Reserva> listEstadoPaseador(int idpaseador, String estado) {
-        return resR.EstadoPaseador(idpaseador,estado);
     }
 
     @Override

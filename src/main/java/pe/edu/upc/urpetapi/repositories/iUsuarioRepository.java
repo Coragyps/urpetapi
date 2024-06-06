@@ -13,4 +13,5 @@ import java.util.List;
 @Repository
 public interface iUsuarioRepository extends JpaRepository<Usuario, Integer> {
     public Usuario findByUsername(String username);
+    public Boolean existsByUsername(String username);
 }

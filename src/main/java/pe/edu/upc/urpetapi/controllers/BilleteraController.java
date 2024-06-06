@@ -1,13 +1,11 @@
 package pe.edu.upc.urpetapi.controllers;
 
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.urpetapi.dtos.BilleteraDto;
 import pe.edu.upc.urpetapi.entities.Billetera;
-import pe.edu.upc.urpetapi.servicesinterfaces.iBilleteraService;
+import pe.edu.upc.urpetapi.services.iBilleteraService;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,33 +16,38 @@ public class BilleteraController {
     @Autowired
     private iBilleteraService bilS;
 
-    @PostMapping("/registrar")//---------------------------HU32: Registar Billetera Virtual
-    @PreAuthorize("hasAuthority('ADMIN') || hasAuthority('CLIENTE')")
-    public void RegistrarBilletera(@RequestBody BilleteraDto billeteraDto) {
+    @PostMapping
+    public void CREATE(@RequestBody BilleteraDto billeteraDto) {
         ModelMapper m = new ModelMapper();
-        Billetera mT = m.map(billeteraDto, Billetera.class);
-        bilS.RegistrarBilletera(mT);
+        Billetera u = m.map(billeteraDto, Billetera.class);
+        bilS.insert(u);
     }
 
-    @GetMapping("/monto")//---------------------------HU21: Revisar Monto de la Billetera Virtual
-    @PreAuthorize("hasAuthority('ADMIN') || hasAuthority('CLIENTE')")
-    public List<BilleteraDto> BilleteraMonto(@RequestParam String username) {
-        return bilS.BilleteraPorUsuario(username).stream().map(y -> {
-            ModelMapper m = new ModelMapper();
-            return m.map(y, BilleteraDto.class);
+    @GetMapping
+    public List<BilleteraDto> READ(){
+        return bilS.list().stream().map(y->{
+            ModelMapper m=new ModelMapper();
+            return m.map(y,BilleteraDto.class);
         }).collect(Collectors.toList());
     }
 
-    @PutMapping("/usar/{id}/{cantidad}")//---------------------------HU13: Pagar con Billetera Virtual
-    @PreAuthorize("hasAuthority('ADMIN') || hasAuthority('CLIENTE')")
-    public void Usar(@PathVariable("id") Integer id, @PathVariable("cantidad") double cantidad) {
-        bilS.UsarBilleter(id, cantidad);
+    @PutMapping
+    public void UPDATE(@RequestBody BilleteraDto billeteraDto) {
+        ModelMapper m = new ModelMapper();
+        Billetera u = m.map(billeteraDto, Billetera.class);
+        bilS.insert(u);
     }
 
-    @PutMapping("/recargar/{id}/{cantidad}")//---------------------------HU22: Recargar Billetera Virtual
-    @PreAuthorize("hasAuthority('ADMIN') || hasAuthority('CLIENTE')")
-    public void Recargar(@PathVariable("id") Integer id, @PathVariable("cantidad") double cantidad) {
-        bilS.RecargarBilleter(id, cantidad);
+    @DeleteMapping("/{id}")
+    public void DELETE(@PathVariable("id") Integer id) {
+        bilS.delete(id);
+    }
+
+    @GetMapping("/{id}")
+    public BilleteraDto READID(@PathVariable("id") Integer id){
+        ModelMapper m = new ModelMapper();
+        BilleteraDto dto = m.map(bilS.listId(id),BilleteraDto.class);
+        return dto;
     }
 }
 

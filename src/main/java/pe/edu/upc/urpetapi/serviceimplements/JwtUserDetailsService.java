@@ -1,4 +1,4 @@
-package pe.edu.upc.urpetapi.servicesimplements;
+package pe.edu.upc.urpetapi.serviceimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

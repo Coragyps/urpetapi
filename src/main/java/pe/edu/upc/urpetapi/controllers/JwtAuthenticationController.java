@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pe.edu.upc.urpetapi.securities.JwtRequest;
 import pe.edu.upc.urpetapi.securities.JwtResponse;
 import pe.edu.upc.urpetapi.securities.JwtTokenUtil;
-import pe.edu.upc.urpetapi.servicesimplements.JwtUserDetailsService;
+import pe.edu.upc.urpetapi.serviceimplements.JwtUserDetailsService;
 
 
 @RestController

@@ -1,11 +1,10 @@
-package pe.edu.upc.urpetapi.servicesimplements;
+package pe.edu.upc.urpetapi.serviceimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.urpetapi.dtos.ListarPaseadoresDto;
 import pe.edu.upc.urpetapi.entities.Usuario;
 import pe.edu.upc.urpetapi.repositories.iUsuarioRepository;
-import pe.edu.upc.urpetapi.servicesinterfaces.iUsuarioService;
+import pe.edu.upc.urpetapi.services.iUsuarioService;
 
 import java.util.List;
 
@@ -14,7 +13,7 @@ public class UsuarioServiceImplement implements iUsuarioService {
     @Autowired
     private iUsuarioRepository useR;
 
-    @Override//---------------------------HU18: Registrarse en la Aplicacion
+    @Override
     public void insert(Usuario usuario) {
         useR.save(usuario);
     }
@@ -32,5 +31,10 @@ public class UsuarioServiceImplement implements iUsuarioService {
     @Override
     public Usuario listId(int id) {
         return useR.findById(id).orElse(new Usuario());
+    }
+
+    @Override
+    public Boolean existeNombre(String username) {
+        return useR.existsByUsername(username);
     }
 }
