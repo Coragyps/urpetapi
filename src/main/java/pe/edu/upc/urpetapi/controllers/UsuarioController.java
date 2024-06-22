@@ -64,4 +64,25 @@ public class UsuarioController {
         boolean exists = useS.existeNombre(username);
         return ResponseEntity.ok(exists);
     }
+
+    @GetMapping("/detalle")
+    public UsuarioDto infoUsuario(@RequestParam String username){
+        ModelMapper m = new ModelMapper();
+        UsuarioDto dto = m.map(useS.infoUsuario(username),UsuarioDto.class);
+        return dto;
+    }
+
+    @PostMapping("/")
+    public void CREATE(@RequestBody UsuarioDto usuarioDto, @RequestParam String rol) {
+        ModelMapper m = new ModelMapper();
+        Usuario u = m.map(usuarioDto, Usuario.class);
+        String encodedPassword = passwordEncoder.encode(u.getPassword());
+        u.setPassword(encodedPassword);
+
+        int userId=useS.insertAndGetId(u);
+        useS.insRol(rol,userId);
+        if ("PASEADOR".equals(rol)) {
+            useS.insPas(userId);
+        }
+    }
 }

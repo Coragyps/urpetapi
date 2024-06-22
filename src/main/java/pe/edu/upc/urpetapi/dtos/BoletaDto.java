@@ -8,6 +8,7 @@ public class BoletaDto {
     private Double BoletaMonto;
     private LocalDate BoletaFecha;
     private String BoletaMoneda;
+    private Double BoletaImpuesto;
     private Reserva reserva;
 
     public int getBoletaId() {
@@ -40,6 +41,14 @@ public class BoletaDto {
 
     public void setBoletaMoneda(String boletaMoneda) {
         BoletaMoneda = boletaMoneda;
+    }
+
+    public Double getBoletaImpuesto() {
+        return BoletaImpuesto;
+    }
+
+    public void setBoletaImpuesto(Double boletaImpuesto) {
+        BoletaImpuesto = boletaImpuesto;
     }
 
     public Reserva getReserva() {

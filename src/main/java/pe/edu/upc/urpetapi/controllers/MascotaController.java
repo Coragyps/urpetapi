@@ -49,4 +49,12 @@ public class MascotaController {
         MascotaDto dto = m.map(masS.listId(id),MascotaDto.class);
         return dto;
     }
+
+    @GetMapping("/mias/{id}")
+    public List<MascotaDto> MisMascotas(@PathVariable("id") Integer id){
+        return masS.MascotaPorUsuario(id).stream().map(y->{
+            ModelMapper m=new ModelMapper();
+            return m.map(y,MascotaDto.class);
+        }).collect(Collectors.toList());
+    }
 }

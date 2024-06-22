@@ -32,4 +32,10 @@ public class MascotaServiceImplement implements iMascotaService {
     public Mascota listId(int id) {
         return masR.findById(id).orElse(new Mascota());
     }
+
+    @Override
+    public List<Mascota> MascotaPorUsuario(int user_id) {
+        return masR.MascotaPorUsuario(user_id);
+    }
+
 }

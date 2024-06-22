@@ -12,7 +12,6 @@ import java.util.List;
 @Repository
 public interface iMascotaRepository extends JpaRepository<Mascota, Integer> {
     @Query(value = "select m.* from mascota m \n " +
-            "join usuario u on m.usuario_id = u.usuario_id \n " +
-            "where u.username = :username and m.mascota_habilitado = true", nativeQuery = true)
-    public List<Mascota> MascotaPorUsuario(@Param("username") String username);//---------------------------HU08: Revisar Mascotas Registradas
+            "where m.usuario_id = :user_id and m.mascota_habilitado = true", nativeQuery = true)
+    public List<Mascota> MascotaPorUsuario(@Param("user_id") int user_id);
 }

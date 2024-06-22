@@ -37,4 +37,23 @@ public class UsuarioServiceImplement implements iUsuarioService {
     public Boolean existeNombre(String username) {
         return useR.existsByUsername(username);
     }
+
+    @Override
+    public Usuario infoUsuario(String username) { return useR.findByUsername(username); }
+
+    @Override
+    public void insRol(String rol, int user_id) {
+        useR.insRol(rol,user_id);
+    }
+
+    @Override
+    public int insertAndGetId(Usuario usuario) {
+        Usuario newUser=useR.save(usuario);
+        return newUser.getUsuarioId();
+    }
+
+    @Override
+    public void insPas(int user_id) {
+        useR.insPas(user_id);
+    }
 }
